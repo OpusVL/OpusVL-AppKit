@@ -494,6 +494,10 @@ a.link_button_add {
 	padding-left: 42px;
 }
 
+a.link_button_no_icon {
+	background: url(/static/images/controls/button-gradient.png) no-repeat -4px -6px;
+}
+
 a.link_button_back {
 	background: url(/static/images/controls/back-button-med.png) no-repeat -3px -5px;
 	padding-left: 47px;
