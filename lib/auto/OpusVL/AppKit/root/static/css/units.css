@@ -5,6 +5,11 @@
  * deparse the value-with-unit in the JS or other clients.
  */
 
+/* Prevent an element's text-transform making the units wrong */
+.unit:after, .unit:before {
+    text-transform: none;
+}
+
 .unit.unit-cc:after,
 .unit.unit-engine-size:after {
     content: 'cc';
