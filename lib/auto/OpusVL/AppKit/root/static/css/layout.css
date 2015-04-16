@@ -270,6 +270,10 @@ div.version
 
 /* @group Alerts */
 
+div.alert.no-message {
+    display: none;
+}
+
 div.alert {
 	margin-right: 100px;
 	margin-left: 100px;
