@@ -117,7 +117,7 @@ use Test::WWW::Mechanize::Catalyst 'TestApp';
     is $mech->content, '{"message":"Access Denied"}';
     $mech->get_ok("/rest/vehicle/30");
     my $r = $mech->content;
-    is $r, '{"source_code":"Test","stock_id":"30"}';
+    like $r, qr'{"source_code":"Test","stock_id":"?30"?}';
     $mech->get("/rest/vehicle/1");
     is $mech->status, 404;
     is $mech->content, '{"error":"Vehicle not found"}';
