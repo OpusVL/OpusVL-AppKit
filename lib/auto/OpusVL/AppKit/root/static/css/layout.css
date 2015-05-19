@@ -465,3 +465,10 @@ div#opusvl {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+.tooltip-tip {
+    display: none;
+    background: white;
+    border: 2px solid gray;
+    padding: 0 1em;
+}

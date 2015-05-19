@@ -958,6 +958,11 @@ div.search_result_url {
     color: #4F586E;
 }
 
+.ban {
+    text-decoration: line-through;
+    cursor: not-allowed;
+}
+
 /* @end */
 
 

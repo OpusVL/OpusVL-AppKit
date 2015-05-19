@@ -30,6 +30,13 @@
                 document.title = h1 + " | " + "[% c.controller.appkit_name %]";
             }
         }
+
+        $('.default-tooltip').each(function() {
+            var $this = $(this);
+            var tip = $this.attr('rel') || 'next';
+
+            $this.protip();
+        });
     });
 </script>
 

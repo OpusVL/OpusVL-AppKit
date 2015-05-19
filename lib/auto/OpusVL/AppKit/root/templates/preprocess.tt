@@ -18,6 +18,7 @@
             '/static/js/jquery-ui-1.9.0.custom.min.js', 
             '/static/js/appkit.js',
             '/static/js/curry.js',
+            '/static/js/jquery.protip.js',
         ],
         jssrc       => [],
     };
