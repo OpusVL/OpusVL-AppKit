@@ -28,10 +28,14 @@ requires 'Catalyst::View::Excel::Template::Plus';
 requires 'Template::AutoFilter';
 requires 'Template::Alloy' => '1.020';
 
+# Fixes issues in the Catalyst dep chain
+requires 'Devel::InheritNamespace' => '0.00003';
+
 # Base Catalyst components
 requires 'Catalyst::Runtime' => '5.90051';
 requires 'Catalyst::Action::RenderView';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
+requires 'Catalyst::Plugin::ConfigLoader::Environment';
 
 # Catalyst views
 requires 'Catalyst::View::TT';

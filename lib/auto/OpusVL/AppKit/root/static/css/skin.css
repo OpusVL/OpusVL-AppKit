@@ -494,6 +494,10 @@ a.link_button_add {
 	padding-left: 42px;
 }
 
+a.link_button_no_icon {
+	background: url(/static/images/controls/button-gradient.png) no-repeat -4px -6px;
+}
+
 a.link_button_back {
 	background: url(/static/images/controls/back-button-med.png) no-repeat -3px -5px;
 	padding-left: 47px;
@@ -560,7 +564,7 @@ a.link_next {
 
 /* @group Submit buttons */
 
-input.submit {
+input.submit, input.main_button {
 	background-color: white;
 	display: inline-block;
 	font-size: .9em;
@@ -609,7 +613,7 @@ input.submit_back {
 	padding-left: 47px;	
 }
 
-input.submit_add {
+input.submit_add, input.main_button.add {
 	background: url(/static/images/controls/add-med.png) no-repeat -4px -6px;
 	padding-left: 42px;	
 }
@@ -944,6 +948,19 @@ div.search_result_url {
 	padding-left: 0px;
 	font-size: .9em;
 	color: #1c7004;
+}
+
+.hidden {
+    display: none;
+}
+
+.chosen-container-single .chosen-default {
+    color: #4F586E;
+}
+
+.ban {
+    text-decoration: line-through;
+    cursor: not-allowed;
 }
 
 /* @end */

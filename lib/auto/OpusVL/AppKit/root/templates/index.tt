@@ -8,7 +8,7 @@
 </div>
 
 [% FOR portlet IN portlets %]
-    <div class="portlet">
+    <div class="portlet [% portlet.name | lower | remove('\W+') %]">
         <div class="portlet_name">
             [% portlet.name %]
         </div>

@@ -54,19 +54,21 @@
 
                 <div id="application">
                     [% IF before_content %]
-                    [% before_content | none %]
+                        [% before_content | none %]
                     [% END %]
                     <div id="application_body">
-                        [% IF status_message.defined %]
-                            <div class="alert status">
-                                [% status_message %]
-                            </div>
-                        [% END %]
-                        [% IF error_message.defined %]
-                            <div class="alert error">
-                                [% error_message %]
-                            </div>
-                        [% END %]
+                        <div class="alert status 
+                            [% UNLESS status_message.defined %]no-message[% END %]
+                        ">
+                            
+                            [% status_message %]
+                        </div>
+                        <div class="alert error
+                            [% UNLESS error_message.defined %]no-message[% END %]
+                        ">
+                        
+                            [% error_message %]
+                        </div>
                         
                         [% content | none %]
 

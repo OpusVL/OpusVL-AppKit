@@ -270,6 +270,10 @@ div.version
 
 /* @group Alerts */
 
+div.alert.no-message {
+    display: none;
+}
+
 div.alert {
 	margin-right: 100px;
 	margin-left: 100px;
@@ -460,4 +464,11 @@ div#opusvl {
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.tooltip-tip {
+    display: none;
+    background: white;
+    border: 2px solid gray;
+    padding: 0 1em;
 }
