@@ -184,8 +184,11 @@ override _build_config => sub
     $config->{'View::AppKitTT'}->{'TEMPLATE_EXTENSION'}   = '.tt';
     $config->{'View::AppKitTT'}->{'WRAPPER'}              = 'wrapper.tt';
     $config->{'View::AppKitTT'}->{'PRE_PROCESS'}          = 'preprocess.tt';
-    $config->{'custom-error-message'}->{'view-name'} = 'AppKitTT';
 
+    # This is the latest place this can be done and actually have an effect.
+    $config->{'View::AppKitTT'}->{RECURSION}              = 1;
+
+    $config->{'custom-error-message'}->{'view-name'} = 'AppKitTT';
     # Configure session handling..
     $config->{'Plugin::Session'} ||= {};
     $config->{'Plugin::Session'}->{flash_to_stash} = 1;
