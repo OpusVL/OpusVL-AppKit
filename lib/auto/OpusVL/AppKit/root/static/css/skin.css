@@ -963,6 +963,23 @@ div.search_result_url {
     cursor: not-allowed;
 }
 
+/* Newer buttons */
+
+a.button {
+    text-decoration: none;
+    color: #414141;
+    border: 1px solid #515151;
+    border-radius: 15%;
+    background: linear-gradient(to bottom, #feffff 0%,#ddf1f9 35%,#a0d8ef 100%);
+    display: inline-block;
+}
+
+a.button.icon-only i {
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+}
+
 /* @end */
 
 
