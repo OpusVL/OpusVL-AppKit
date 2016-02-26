@@ -2,66 +2,68 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
-* Converted to Dist::Dilla.
+2.18      2016-02-26 16:07:09+00:00 Europe/London
 
-* Added support for new config parameter to allow the insertion of extra
-  css files into the head section.  This is extra_css.
-* Allow HSTS header Strict-Transport-Security to be turned on with ssl_only config setting.
+    * Converted to Dist::Dilla.
 
-* Ensured our applications continue to work with HTML::FormFu.  If you want to 
-  ditch all it's classes set the 'no_formfu_classes' config setting and FormFu
-  will stop adding all the extra classes onto all the html it renders.
+    * Added support for new config parameter to allow the insertion of extra
+      css files into the head section.  This is extra_css.
+    * Allow HSTS header Strict-Transport-Security to be turned on with ssl_only config setting.
 
-* Added installation_type configuration setting that will be inserted into
-  the class of the body element on the application style apps.  This allows
-  for differences in config to be targetted by CSS.  e.g. staging and live.
-* Added basic click jack protection by default.  Use no_clickjack_protection 
-  config setting, or in the stash to disable.
-* Added extra javascript to the tab setup to highlight errors appearing
-  in the tabs.
+    * Ensured our applications continue to work with HTML::FormFu.  If you want to 
+      ditch all it's classes set the 'no_formfu_classes' config setting and FormFu
+      will stop adding all the extra classes onto all the html it renders.
 
-* Fixed flash to stash config setting so it uses newer config setting - that 
-  also prevents setting the secure cookies setting in the config from 
-  causing the setting from being dropped.
-* Added an ajax ongoing indicator
-* Create a new session id when we login.
-* Updated the authentication to not trip over REST controllers.
+    * Added installation_type configuration setting that will be inserted into
+      the class of the body element on the application style apps.  This allows
+      for differences in config to be targetted by CSS.  e.g. staging and live.
+    * Added basic click jack protection by default.  Use no_clickjack_protection 
+      config setting, or in the stash to disable.
+    * Added extra javascript to the tab setup to highlight errors appearing
+      in the tabs.
+
+    * Fixed flash to stash config setting so it uses newer config setting - that 
+      also prevents setting the secure cookies setting in the config from 
+      causing the setting from being dropped.
+    * Added an ajax ongoing indicator
+    * Create a new session id when we login.
+    * Updated the authentication to not trip over REST controllers.
 
 1.47
 
-* Fixed minor alloy template problem with the global search.
+    * Fixed minor alloy template problem with the global search.
 
 1.45
 
-* Added a small change to the intranet_wrapper.tt that checks for a customer using the Catalyst config file.
-  This was needed for Eazy Collect to include the Notifications in the top navigation.
+    * Added a small change to the intranet_wrapper.tt that checks for a customer using the Catalyst config file.
+      This was needed for Eazy Collect to include the Notifications in the top navigation.
 
 1.42
 
-* Switched to jQuery 1.7.1 - the motivation for doing this was the warnings
-  Webkit has been producing, complaining that a feature the old version was using 
-  is now deprecated.  More information is here, http://bugs.jquery.com/ticket/10531
+    * Switched to jQuery 1.7.1 - the motivation for doing this was the warnings
+      Webkit has been producing, complaining that a feature the old version was using 
+      is now deprecated.  More information is here, http://bugs.jquery.com/ticket/10531
 
 1.41
 
-* Fixed a problem that caused the appkit to crash sometimes because the feature
-  list got blown away from the cache.
+    * Fixed a problem that caused the appkit to crash sometimes because the feature
+      list got blown away from the cache.
 
 1.40
 
-* Added appkit_js option to load external Javascript sources from the controller
-    __PACKAGE__->config(
-        appkit_js => [qw( /static/js/main.js /static/js/jquery.tooltip.js )],
-    );
+    * Added appkit_js option to load external Javascript sources from the controller
+        __PACKAGE__->config(
+            appkit_js => [qw( /static/js/main.js /static/js/jquery.tooltip.js )],
+        );
 
 1.39
 
-* Added 'Description' attribute to actions. Use it to add a title attribute to the left-side menu links.
-    sub action_name
-        : Local
-        : Args(0)
-        : NavigationName('Blah')
-        : Description('This will be the title')
+    * Added 'Description' attribute to actions. Use it to add a title attribute to the left-side menu links.
+        sub action_name
+            : Local
+            : Args(0)
+            : NavigationName('Blah')
+            : Description('This will be the title')
 
 1.37
 
