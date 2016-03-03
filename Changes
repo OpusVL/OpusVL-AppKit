@@ -2,6 +2,10 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.19      2016-03-03 14:15:30+00:00 Europe/London
+
+    * Added missing dependency.
+
 2.18      2016-02-26 16:07:09+00:00 Europe/London
 
     * Converted to Dist::Dilla.
