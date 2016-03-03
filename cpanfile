@@ -52,6 +52,7 @@ requires "Try::Tiny" => "0";
 requires "XML::Simple" => "0";
 requires "parent" => "0";
 requires "experimental" => 0;
+requires "Catalyst::Plugin::ConfigLoader::Environment" => 0;
 
 on 'build' => sub {
   requires "ExtUtils::MakeMaker" => "6.36";
