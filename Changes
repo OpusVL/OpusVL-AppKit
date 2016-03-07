@@ -2,6 +2,10 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.20      2016-03-07 09:28:28+00:00 Europe/London
+    * Upped version number of dependency to ensure we don't
+      end up with a broken version.
+
 2.19      2016-03-03 14:15:30+00:00 Europe/London
 
     * Added missing dependency.
