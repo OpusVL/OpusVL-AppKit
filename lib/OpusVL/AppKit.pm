@@ -88,7 +88,7 @@ Web: L<http://opusvl.com>
 use strict;
 use warnings;
 use OpusVL::AppKit::Builder;
-our $VERSION = '2.21';
+our $VERSION = '2.22';
 
 ##################################################################################################################################
 # main #
