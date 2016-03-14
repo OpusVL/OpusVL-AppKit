@@ -2,6 +2,11 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.21      2016-03-14 12:35:13+00:00 Europe/London
+
+    * Removed default mail server from config since it won't make
+      sense for most applications.
+
 2.20      2016-03-07 09:28:28+00:00 Europe/London
     * Upped version number of dependency to ensure we don't
       end up with a broken version.
