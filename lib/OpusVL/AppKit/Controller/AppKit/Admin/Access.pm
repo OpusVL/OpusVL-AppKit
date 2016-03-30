@@ -479,6 +479,53 @@ sub show_role
     $c->stash->{template} = 'appkit/admin/access/show_role.tt';
 }
 
+sub edit_descriptions
+    : Local
+    : AppKitFeature('Feature Documentation')
+    : AppKitForm
+{
+    my ($self, $c) = @_;
+
+    my $form = $c->stash->{form};
+    my @features = $c->model('AppKitAuthDB::Aclfeature')->sorted->all;
+    my $count = @features;
+    $self->add_final_crumb($c, 'Feature documentation');
+    $form->get_all_element('features')->repeat($count);
+    my $defaults = {};
+    if($form->submitted_and_valid)
+    {
+        my %by_id = map { $_->id => $_ } @features;
+        my $schema = $c->model('AppKitAuthDB')->schema;
+        my $guard = $schema->storage->txn_scope_guard;
+        for(my $i = 1; $i <= $count; $i++)
+        {
+            my $id = $c->req->params->{"id_$i"};
+            my $description = $c->req->params->{"feature_description_$i"} || undef;
+            my $feature = $by_id{$id};
+            if($feature)
+            {
+                $feature->update({ feature_description => $description });
+            }
+        }
+        $guard->commit;
+        $c->flash->{status_msg} = 'Changes saved';
+        $c->res->redirect($c->req->uri);
+    }
+    else
+    {
+        my $i = 1;
+        for my $f (@features)
+        {
+            $form->get_all_element("feature_description_$i")->label($f->feature);
+            $defaults->{"id_$i"} = $f->id;
+            #$defaults->{"feature_$i"} = $f->feature;
+            $defaults->{"feature_description_$i"} = $f->feature_description;
+            $i++;
+        }
+        $form->default_values($defaults);
+    }
+}
+
 =cut
 1;
 __END__

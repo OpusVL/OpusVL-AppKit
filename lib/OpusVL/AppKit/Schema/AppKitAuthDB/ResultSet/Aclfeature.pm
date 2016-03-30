@@ -5,6 +5,12 @@ use warnings;
 
 use base 'DBIx::Class::ResultSet';
 
+sub sorted
+{
+    my $self = shift;
+    return $self->search(undef, { order_by => ['feature'] });
+}
+
 sub descriptions
 {
     my $self = shift;

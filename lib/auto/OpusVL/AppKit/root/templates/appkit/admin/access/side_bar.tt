@@ -29,6 +29,15 @@
                     </form>
                 </fieldset>
 
+                [% a = c.controller.action_for('edit_descriptions') %]
+                [% IF c.can_access(a) %]
+                <fieldset>
+                    <legend>
+                        Admin
+                    </legend>
+                <a href="[% c.uri_for(a) %]">Role help</a>
+                </fieldset>
+                [% END %]
             </div>
 
 
