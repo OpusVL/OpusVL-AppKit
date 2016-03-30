@@ -326,6 +326,7 @@ sub show_role
     my $path2root_visitor = Tree::Simple::VisitorFactory->getVisitor("PathToRoot");
     $path2root_visitor->setNodeFilter(sub { my ($t) = @_; return $t->getNodeValue()->node_name });
     $c->stash->{appkit_features} = $c->appkit_features->feature_list($show_role);
+    $c->stash->{descriptions} = $c->model('AppKitAuthDB::Aclfeature')->descriptions;
 
     # test if need to process some rules submission...
     if ( $c->req->method eq 'POST' )

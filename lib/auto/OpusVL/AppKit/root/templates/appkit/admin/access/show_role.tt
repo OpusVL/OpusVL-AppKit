@@ -23,7 +23,7 @@
                         <ul>
                         [% FOREACH feature IN appkit_features.$app.keys %]
                         <li [% IF appkit_features.$app.$feature %]class="allowed"[% END %]><input type="checkbox" id="feature_[% app| html %]/[% feature| html %]" name="feature_[% app| html %]/[% feature| html %]"[% IF appkit_features.$app.$feature %] checked="checked"[% END %] value="allow">
-                        <label for="feature_[% app| html %]/[% feature| html %]">[% feature| html %]</label>
+                        <label for="feature_[% app| html %]/[% feature| html %]">[% feature| html %][% IF descriptions.$app.$feature %] [[% descriptions.$app.$feature %]][% END %]</label>
                         </li>
                         [% END %]
                         </ul>
