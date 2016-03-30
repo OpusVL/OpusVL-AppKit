@@ -479,6 +479,29 @@ sub show_role
     $c->stash->{template} = 'appkit/admin/access/show_role.tt';
 }
 
+sub edit_descriptions
+    : Local
+    : AppKitFeature('Feature Documentation')
+    : AppKitForm
+{
+    my ($self, $c) = @_;
+
+    my $form = $c->stash->{form};
+    my @features = $c->model('AppKitAuthDB::Aclfeature')->sorted->all;
+    $form->get_all_element('features')->repeat(scalar @features);
+    my $i = 1;
+    my $defaults = {};
+    for my $f (@features)
+    {
+        $form->get_all_element("feature_description_$i")->label($f->feature);
+        $defaults->{"id_$i"} = $f->id;
+        #$defaults->{"feature_$i"} = $f->feature;
+        $defaults->{"feature_description_$i"} = $f->feature_description;
+        $i++;
+    }
+    $form->default_values($defaults);
+}
+
 =cut
 1;
 __END__
