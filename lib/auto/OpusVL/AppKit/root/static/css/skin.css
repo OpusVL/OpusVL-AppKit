@@ -982,4 +982,7 @@ a.button.icon-only i {
 
 /* @end */
 
-
+.feature_help label
+{
+    width: 350px;
+}
