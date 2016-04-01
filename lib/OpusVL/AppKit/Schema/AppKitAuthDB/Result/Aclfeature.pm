@@ -39,7 +39,7 @@ __PACKAGE__->add_columns(
   "feature",
   { data_type => "text", is_nullable => 0 },
   "feature_description",
-  { data_type => "text", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
 );
 __PACKAGE__->set_primary_key("id");
 
