@@ -963,6 +963,14 @@ div.search_result_url {
     cursor: not-allowed;
 }
 
+.hint:after {
+    text-decoration: none !important;
+    margin-left: 0.5em;
+    font-family: FontAwesome;
+    content: "\f059";
+    cursor: help;
+}
+
 /* Newer buttons */
 
 a.button {
