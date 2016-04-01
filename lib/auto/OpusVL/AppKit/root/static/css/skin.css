@@ -468,7 +468,7 @@ div.pager
 
 /* @group Link buttons */
 
-a.link_button {
+.link_button {
 	background-color: white;
 	display: inline-block;
 	font-size: .9em;
@@ -485,45 +485,50 @@ a.link_button {
 	margin-right: 7px;
 }
 
-a:hover.link_button {
+.link_button:hover {
 	color: #222;
 }
 
-a.link_button_add {
+.link_button.disabled,
+.link_button.disabled:hover {
+    color: #888 !important;
+}
+
+.link_button_add {
 	background: url(/static/images/controls/add-med.png) no-repeat -4px -6px;
 	padding-left: 42px;
 }
 
-a.link_button_no_icon {
+.link_button_no_icon {
 	background: url(/static/images/controls/button-gradient.png) no-repeat -4px -6px;
 }
 
-a.link_button_back {
+.link_button_back {
 	background: url(/static/images/controls/back-button-med.png) no-repeat -3px -5px;
 	padding-left: 47px;
 }
 
-a.link_button_delete {
+.link_button_delete {
 	background: url(/static/images/controls/delete-button-med.png) no-repeat -1px -4px;
 	padding-left: 43px;
 }
 
-a.link_button_ok {
+.link_button_ok {
 	background: url(/static/images/controls/ok-button-med.png) no-repeat -2px -3px;
 	padding-left: 38px;	
 }
 
-a.link_button_edit {
+.link_button_edit {
 	background: url(/static/images/controls/edit-button-med.png) no-repeat -4px -4px;
 	padding-left: 39px;	
 }
 
-a.link_button_cancel {
+.link_button_cancel {
 	background: url(/static/images/controls/cancel-button-med.png) no-repeat -4px -4px;
 	padding-left: 38px;	
 }
 
-a.link_button_search {
+.link_button_search {
 	background: url(/static/images/controls/search-button-med.png) no-repeat -2px -3px;
 	padding-left: 38px;	
 }
