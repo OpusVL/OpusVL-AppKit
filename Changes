@@ -2,6 +2,10 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.22      2016-04-28 12:59:31+01:00 Europe/London
+
+    * Allow link_button class to be applied to anything.
+    * A <span class="hint"> draws a ? in a circle.
     * Allow annotations to be added beside the features on the roles.
 
 2.21      2016-03-14 12:35:13+00:00 Europe/London
