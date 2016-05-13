@@ -3,8 +3,8 @@ use warnings;
 
 use Test::More;
 BEGIN {
-    if ($ENV{APPKIT_SKIP_CACHE_TESTS}) {
-        plan skip_all => "Cache test skipped by request";
+    unless ($ENV{APPKIT_RUN_CACHE_TESTS}) {
+        plan skip_all => "Not running cache tests without APPKIT_RUN_CACHE_TESTS";
         exit;
     }
 }
