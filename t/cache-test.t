@@ -1,5 +1,13 @@
 use strict;
+use warnings;
+
 use Test::More;
+BEGIN {
+    if ($ENV{APPKIT_SKIP_CACHE_TESTS}) {
+        plan skip_all => "Cache test skipped by request";
+        exit;
+    }
+}
 use Child;
 use Plack::Runner;
 use FindBin qw($Bin);
