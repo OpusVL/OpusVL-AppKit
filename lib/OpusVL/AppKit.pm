@@ -4,102 +4,155 @@ package OpusVL::AppKit;
 
 OpusVL::AppKit - Catalyst based application
 
-=head1 SYNOPSIS
-
-    You use inherite the OpusVL::AppKit by making the following files to your MyApp.
-
-    F<MyApp.pm>:
-
-        package MyApp;
-        use strict;
-        use warnings;
-        use MyApp::Builder;
-        
-        MyApp::Builder->new(appname => __PACKAGE__)->bootstrap;
-
-    F<MyApp/Builder.pm>:
-
-        package MyApp::Builder;
-        use Moose;
-        extends 'OpusVL::AppKit::Builder';
-        override _build_superclasses => sub 
-        {
-            return [ 'OpusVL::AppKit' ]
-        };
-
-    F<myapp.conf>:
-    
-        <OpusVL::AppKit::Plugin::AppKit>
-            access_denied   "access_notallowed"
-            <acl_rules>
-                somecontroller/someaction       "somerole"
-                somecontroller/someaction       "someotherrole"
-                somecontroller/someotheraction  "somerole"
-            </acl_rules>
-        </OpusVL::AppKit::Plugin::AppKit>
-  
-
-
 =head1 DESCRIPTION
 
-    This is a Catalyst Application that was built with the intention of being inherited by using AppBuilder.
+AppKit is based on L<CatalystX::AppBuilder>, and includes some modules for
+common tasks. The idea is that you produce a thin AppKit application, and stick
+multiple modules together.
 
-    You can do 2 things with thie application:
-        1. Enable your catalyst app to use it.
-        2. Add your catalyst app to it.
+We recommend L<Dist::Zilla> to get you started on AppKit. That's because we've
+made minting profiles so we don't have to explain how it works.
 
-    The SYNOPSIS above shows how your can enable your catalyst app to use it (option 1).
+    $ dzil new -PAppKit MyApp
+    $ dzil new -PAppKitX MyApp::AppKitX::NewModularFeature
 
-    For option 2 .. Add your catalyst app to it.. see OpusVL::AppKit::Base::Controller::GUI.
+See L<Dist::Zilla::MintingProfile::AppKit> and L<Dist::Zilla::MintingProfile::AppKitX>.
 
-=head1 SEE ALSO
+Whenever you mint a new AppKit application, you'll end up with a common set of files:
 
-    L<OpusVL::AppKit::Plugin::AppKit>,
-    L<OpusVL::AppKit::Base::Controller::GUI>,
-    L<OpusVL::AppKit::Controller::Root>, 
-    L<Catalyst>
+F<MyApp.pm>:
 
-=head1 SUPPORT
+    package MyApp;
+    use strict;
+    use warnings;
+    use MyApp::Builder;
 
-If you require assistance, support, or further development of this software, please contact OpusVL using the details below:
+    our $VERSION='0.001';
+    
+    my $builder = MyApp::Builder->new(
+        appname => __PACKAGE__,
+        version => $VERSION
+    );
+    
+    $builder->bootstrap;
 
-=over 4
+    1;
 
-=item *
+F<MyApp/Builder.pm>:
 
-Telephone: +44 (0)1788 298 410
+(see also L</Builder>)
 
-=item *
+    package MyApp::Builder;
+    use Moose;
+    extends 'OpusVL::AppKit::Builder';
+    override _build_superclasses => sub 
+    {
+        return [ 'OpusVL::AppKit' ]
+    };
 
-Email: community@opusvl.com
+    override _build_config => sub
+    {
+        my $self   = shift;
+        my $config = super();
 
-=item *
+        $config->{'Controller::Login'} =
+        {
+            traits => '+OpusVL::AppKit::TraitFor::Controller::Login::NewSessionIdOnLogin',
+        };
 
-Web: L<http://opusvl.com>
+        $config->{'View::CMS::Page'}->{AUTO_FILTER} = 'html';
+
+        return $config;
+    };
+
+F<myapp.conf>:
+
+    name MyApp
+
+    <Model::CMS>
+        connect_info dbi:SQLite:t/db/test.db
+        connect_info username
+        connect_info password
+    </Model::CMS>
+
+    <Model::AppKitAuthDB>
+        connect_info dbi:SQLite:t/db/test.db
+        connect_info username
+        connect_info password
+    </Model::AppKitAuthDB>
+
+=head1 AppKitX
+
+AppKitX is the namespace we use for the individual modules from which your
+application is built. Each of this is almost an entire Catalyst application per
+se; except that it doesn't inherit from Catalyst itself, and requires
+marshalling by means of a Builder class.
+
+We generally recommend keeping things as separate as possible, so we normally have:
+
+=over
+
+=item An C<AppKitX> distribution for each logical chunk of the site
+
+=item A C<DB> distribution, usually a L<DBIx::Class> distribution that stands
+independently of the application itself
+
+=item An C<AppKitX::DB> distribution, which provides the L<Catalyst::Model> for
+the aforementioned C<DB> distribution.
 
 =back
 
-=cut
+For example, once we've created C<MyApp>, we would create
+C<MyApp::AppKitX::SomeModule>, C<MyApp::DB>, and C<MyApp::AppKitX::DB>.
 
-##################################################################################################################################
-# use lines #
-##################################################################################################################################
+There will be many C<MyApp::AppKitX::SomeModule> style distributions; and
+possibly some C<MyCompany::AppKitX::SomeModule> distributions, for common
+modules.
+
+=head1 Builder
+
+The builder is provided as a skeleton, but this is where you decide which
+modules get loaded. To do so, you override a method in C<MyApp/Builder.pm>.
+
+
+    override _build_plugins => sub {
+        my $plugins = super();
+        return [ @$plugins, qw/
+            MyApp::AppKitX::Plugin1
+            MyApp::AppKitX::Plugin2
+        / ];
+    }
+
+This is all that's required to connect those plugins together - an app with a
+builder with this method, listing them.
+
+=head1 SEE ALSO
+
+=over
+
+=item L<OpusVL::AppKit::Plugin::AppKit>
+
+=item L<OpusVL::AppKit::Base::Controller::GUI>
+
+=item L<OpusVL::AppKit::Controller::Root>
+
+=item L<Catalyst>
+
+=back
+
+=head1 SUPPORT
+
+Support can be garnered by use of the GitHub issue tracker at
+L<https://github.com/OpusVL/OpusVL-AppKit/issues>
+
+=cut
 
 use strict;
 use warnings;
 use OpusVL::AppKit::Builder;
 our $VERSION = '2.24';
 
-##################################################################################################################################
-# main #
-##################################################################################################################################
-
-# Make the Builder object and run the ->bootstrap so this becomes a AppBuilder inheritable application.. see: 
-#   OpusVL::AppKit::Builder 
-#   CatalystX::AppBuilder
-
 my $builder = OpusVL::AppKit::Builder->new( appname => __PACKAGE__, version => $VERSION );
 $builder->bootstrap;
 
-##################################################################################################################################
 1;
