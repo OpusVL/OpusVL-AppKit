@@ -2,6 +2,13 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.23      2016-05-13 10:41:58+01:00 Europe/London
+
+    * Cache tests are now only run by request (because they only intermittently
+      work)
+    * Logs are no longer buffered. This is useful in `docker logs`
+    * 403 page can now have a custom "access denied" message
+
 2.22      2016-04-28 12:59:31+01:00 Europe/London
 
     * Allow link_button class to be applied to anything.
