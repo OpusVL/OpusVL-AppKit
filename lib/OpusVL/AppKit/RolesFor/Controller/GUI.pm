@@ -327,6 +327,13 @@ sub date_short
         $dt->year;
 }
 
+sub london_date
+{
+    my ($self, $dt) = @_;
+    return if !$dt;
+    $dt->set_time_zone('Europe/London');
+}
+
 =head2 time_long
 
 Provides a long time format function, HH:MM:SS
