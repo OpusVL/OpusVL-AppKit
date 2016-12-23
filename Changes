@@ -2,6 +2,13 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.26      2016-12-23 11:21:05+00:00 Europe/London
+
+   * Kill the sorting if we detect a button too
+   * Quick hack to allow display of dates in London time zone
+   * Added Jenkinsfile for testing
+   * Ensure we test the release
+
 2.25      2016-06-28 14:02:03+01:00 Europe/London
 
    * Split auth database into a new module, OpusVL::AppKit::Schema::AppKitAuthDB
