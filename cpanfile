@@ -37,6 +37,7 @@ requires "Getopt::Compact" => "0";
 requires "HTML::FormFu::Model::DBIC" => "0";
 requires "List::Util" => "0";
 requires "Moose" => "0";
+requires "MooseX::MethodAttributes::Role" => "0";
 requires "Net::LDAP" => "0";
 requires "Plack" => "0";
 requires "String::MkPasswd" => "0";
