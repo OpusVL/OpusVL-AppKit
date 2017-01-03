@@ -53,7 +53,7 @@ requires "XML::Simple" => "0";
 requires "parent" => "0";
 requires "experimental" => 0;
 requires "Catalyst::Plugin::ConfigLoader::Environment" => 0;
-requires "OpusVL::AppKit::Schema::AppKitAuthDB";
+requires "OpusVL::AppKit::Schema::AppKitAuthDB" => '6';
 
 on 'build' => sub {
   requires "ExtUtils::MakeMaker" => "6.36";
