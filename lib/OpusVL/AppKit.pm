@@ -150,7 +150,7 @@ L<https://github.com/OpusVL/OpusVL-AppKit/issues>
 use strict;
 use warnings;
 use OpusVL::AppKit::Builder;
-our $VERSION = '2.28';
+our $VERSION = '2.29';
 
 my $builder = OpusVL::AppKit::Builder->new( appname => __PACKAGE__, version => $VERSION );
 $builder->bootstrap;
