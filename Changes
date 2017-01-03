@@ -2,6 +2,11 @@ This file documents the revision history for Perl extension OpusVL::AppKit.
 
 {{ $NEXT }}
 
+2.27      2017-01-03 12:30:15+00:00 Europe/London
+
+   * Ensure we have a high enough version of our dependency
+     OpusVL::AppKit::Schema::AppKitAuthDB.
+
 2.26      2016-12-23 11:21:05+00:00 Europe/London
 
    * Kill the sorting if we detect a button too
