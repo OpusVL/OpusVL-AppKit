@@ -264,7 +264,7 @@ sub appkit_actiontree
     state $appkit_actiontree = $c->_build_appkit_actiontree;
     state $created = time;
     # force a re-read of the tree.. (for example, if access control changes)...
-    if($rebuild || $c->_are_permissions_modified($created))
+    if($rebuild || $c->_are_permissions_modified($created) || not defined $appkit_actiontree)
     {
         $appkit_actiontree = $c->_build_appkit_actiontree;
         $created = time;
